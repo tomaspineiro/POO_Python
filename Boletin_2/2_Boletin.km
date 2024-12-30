@@ -1,0 +1,153 @@
+# **Boletín de Ejercicios: POO Avanzado en Python**
+
+Este boletín te ayudará a consolidar conceptos de Programación Orientada a Objetos (POO) con ejercicios más desafiantes que incorporan nuevas funcionalidades y conceptos avanzados.
+
+---
+
+## **Ejercicio 1: Herencia y Polimorfismo**
+
+### **Enunciado:**
+Crea un sistema de gestión de vehículos con las siguientes clases:
+
+1. **Clase base `Vehiculo`:**
+   - Atributos: `marca`, `modelo`, `anio` y `estado` ("en uso" o "disponible").
+   - Método `detalles`: muestra los datos del vehículo.
+
+2. **Clases hijas:**
+   - `Coche`: agrega un atributo `numero_puertas` y sobrescribe el método `detalles` para incluir este dato.
+   - `Moto`: agrega un atributo `tipo` ("deportiva" o "urbana") y sobrescribe el método `detalles`.
+
+3. Crea una función que reciba una lista de vehículos y muestre los detalles de cada uno utilizando polimorfismo.
+
+**Ejemplo:**
+```python
+coche1 = Coche("Toyota", "Corolla", 2020, 4)
+moto1 = Moto("Yamaha", "MT-03", 2021, "deportiva")
+
+mostrar_vehiculos([coche1, moto1])
+```
+
+---
+
+## **Ejercicio 2: Abstracción con Clases Abstractas**
+
+### **Enunciado:**
+Usa el módulo `abc` para crear una clase abstracta `Figura` con:
+
+1. Un método abstracto `calcular_area`.
+2. Un método abstracto `calcular_perimetro`.
+
+Luego, crea las clases:
+- **`Rectangulo`** con atributos `base` y `altura`.
+- **`Circulo`** con atributo `radio`.
+
+Ambas clases deben implementar los métodos abstractos. Además, incluye un método `mostrar_info` que imprima área y perímetro.
+
+**Ejemplo:**
+```python
+rectangulo = Rectangulo(5, 10)
+circulo = Circulo(7)
+
+rectangulo.mostrar_info()
+circulo.mostrar_info()
+```
+
+---
+
+## **Ejercicio 3: Relaciones entre Clases**
+
+### **Enunciado:**
+Diseña un sistema de gestión de una tienda:
+
+1. **Clase `Producto`:**
+   - Atributos: `nombre`, `precio`, `stock`.
+   - Métodos para aumentar y disminuir el stock.
+
+2. **Clase `Carrito`:**
+   - Atributos: lista de productos y cantidades.
+   - Métodos:
+     - `agregar_producto`: recibe un producto y una cantidad.
+     - `eliminar_producto`: elimina un producto del carrito.
+     - `calcular_total`: devuelve el costo total.
+
+3. **Clase `Tienda`:**
+   - Atributos: nombre de la tienda y lista de productos disponibles.
+   - Métodos para mostrar los productos disponibles y procesar compras.
+
+**Ejemplo:**
+```python
+producto1 = Producto("Manzana", 0.5, 50)
+producto2 = Producto("Pan", 1.0, 20)
+
+carrito = Carrito()
+carrito.agregar_producto(producto1, 5)
+carrito.agregar_producto(producto2, 2)
+print(carrito.calcular_total())
+```
+
+---
+
+## **Ejercicio 4: Manejo de Excepciones Personalizadas**
+
+### **Enunciado:**
+Crea un sistema de cuentas bancarias:
+
+1. **Clase `Cuenta`:**
+   - Atributos: `titular`, `saldo`.
+   - Métodos:
+     - `depositar`: añade dinero al saldo.
+     - `retirar`: reduce el saldo, pero lanza una excepción personalizada `SaldoInsuficiente` si el saldo es insuficiente.
+
+2. Define la excepción personalizada `SaldoInsuficiente` que incluya un mensaje explicativo.
+
+3. Maneja correctamente las excepciones al intentar retirar dinero.
+
+**Ejemplo:**
+```python
+cuenta = Cuenta("Juan", 1000)
+cuenta.depositar(500)
+
+try:
+    cuenta.retirar(2000)
+except SaldoInsuficiente as e:
+    print(e)
+```
+
+---
+
+## **Ejercicio 5: Proyecto Final - Sistema de Reserva de Habitaciones**
+
+### **Enunciado:**
+Crea un sistema para gestionar las reservas de un hotel con las siguientes clases:
+
+1. **Clase `Habitacion`:**
+   - Atributos: `numero`, `tipo` ("individual", "doble", "suite"), `precio` y `estado` ("disponible" o "ocupada").
+   - Método `reservar`: cambia el estado a "ocupada".
+   - Método `liberar`: cambia el estado a "disponible".
+
+2. **Clase `Cliente`:**
+   - Atributos: `nombre`, `dni`, lista de habitaciones reservadas.
+   - Método para mostrar las habitaciones reservadas.
+
+3. **Clase `Hotel`:**
+   - Atributos: nombre del hotel, lista de habitaciones.
+   - Métodos:
+     - `mostrar_habitaciones_disponibles`: muestra todas las habitaciones libres.
+     - `realizar_reserva`: permite a un cliente reservar una habitación.
+     - `cancelar_reserva`: libera una habitación reservada.
+
+**Ejemplo:**
+```python
+hotel = Hotel("Gran Hotel")
+habitacion1 = Habitacion(101, "doble", 100)
+habitacion2 = Habitacion(102, "suite", 200)
+hotel.agregar_habitacion(habitacion1)
+hotel.agregar_habitacion(habitacion2)
+
+cliente = Cliente("Ana", "12345678A")
+hotel.realizar_reserva(cliente, 101)
+cliente.mostrar_reservas()
+hotel.mostrar_habitaciones_disponibles()
+```
+
+---
